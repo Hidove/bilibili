@@ -1,0 +1,81 @@
+<section class="content-box">
+  <ol class="breadcrumb">
+    <a href="?">首页</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;<a href="yu('list',yz[tid])">yz[type]</a>&nbsp;&nbsp;&raquo;&nbsp;&nbsp;yz[name]
+  </ol>
+  <div class="content-row">
+    <div class="cont-l">
+      <div class="con-pic">  <img class="img-thumbnail" alt="yz[name]" src="yz[pic]">
+
+      </div>
+      <div class="con-dete">
+        <div class="con-detail">
+          <ul>
+            <li class="li_l"><span class="info-label">片名</span></li>
+            <li class="li_r">yz[name]</li>
+          </ul>
+          <ul>
+            <li class="li_l"><span class="info-label">导演</span></li>
+            <li class="li_r">yz[director]</li>
+          </ul>
+          <ul>
+            <li class="li_l"><span class="info-label">主演</span></li>
+            <li class="li_r">yz[actor]</li>
+          </ul>
+		  
+          <ul>
+            <li class="li_l"><span class="info-label">类型</span></li>
+            <li class="li_r">yz[type]</li>
+          </ul>
+		  
+          <ul>
+            <li class="li_l"><span class="info-label">地区</span></li>
+            <li class="li_r">yz[area]</li>
+          </ul>
+          <ul>
+            <li class="li_l"><span class="info-label">更新时间</span></li>
+            <li class="li_r">yz[last]</li>
+          </ul>
+        </div>
+      </div>
+      <div class="con-des">
+       <p> <strong>剧情介绍：</strong></p>
+       <p class="summary">yz[des]</p>
+      </div>
+    </div>
+  </div>
+  <div class="panel" id="iframe" style="display:none;"> 
+<iframe src="" width="100%" height="400px" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="true" id="frame"></iframe>
+     </div>
+  <div class="play-list" id="playlist">
+    <div class="panel"> 
+      <div class="panel-heading"><strong>
+        <mb class="mbnone">《yz[name]》 - </mb>
+       资源加载中：</strong></div>
+      <ul class="dslist-group" id="zylx资源加载中">
+        <li><a href="#iframe" target="_self" onclick="bf('剧集地址加载中')">剧集加载中</a></li>
+      </ul>
+      <div class="panel-footer"> <strong>《yz[name]》 - 资源加载中资源观看帮助：</strong><br/>
+        1、有个别电影打开后播放需要等待。<br/>
+        2、有的播放不了请多刷新几下，试试。 <br/>
+	  </div>
+     </div>
+
+ </div>
+
+
+    
+</section>
+<script>//这段JS记得COPY到模板
+var bflist=yz[dl];var jx='yk[解析]';
+function bf(str){document.getElementById("iframe").style.display="block";document.getElementById("frame").src=jx+str;}
+if(Array.isArray(bflist['dd'])){var viddz=bflist['dd'];}else{var viddz=new Array(bflist['dd']);}var bfmoban=document.getElementById("playlist").innerHTML;document.getElementById("playlist").innerHTML='';
+for(var i in viddz) { 
+viddz[i]=viddz[i].split("#");
+for (var k=0;k<viddz[i].length;k++){
+viddz[i][k]=viddz[i][k].split("$");
+if(viddz[i][k][2]==undefined){var zyname='yun';}else{var zyname=viddz[i][k][2];}
+if(k=='0'){document.getElementById("playlist").innerHTML+=bfmoban.replace(/资源加载中/g,zyname);var jjmoban=document.getElementById("zylx"+zyname).innerHTML;var bfnr='';}
+bfnr=bfnr+jjmoban.replace(/剧集加载中/g,viddz[i][k][0]).replace(/剧集地址加载中/g,viddz[i][k][1]);
+}document.getElementById("zylx"+zyname).innerHTML=bfnr;
+}
+</script>
